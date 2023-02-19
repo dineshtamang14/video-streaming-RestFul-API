@@ -16,7 +16,7 @@ app.use(fileRoutes);
 app.use(chunkRoutes);
 app.use(segmentRoutes);
 
-const PORT = 3001;
+const PORT = 8000;
 app.listen(PORT, hostname, () => {
     console.log(`🚀 Server started at http://localhost:${PORT}`);
 });

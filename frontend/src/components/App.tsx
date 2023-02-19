@@ -4,16 +4,13 @@ import backgroundImage from '../assets/background.png';
 import './App.css';
 import '@vime/core/themes/default.css';
 
-const HOST = 'http://localhost:3001';
+const HOST = 'http://localhost:8000';
 
-/**
- * Video player: https://vimejs.com/components/providers/video
- */
 export const App = () => {
     const [posterUrl, setPosterUrl] = useState<string>();
 
     const getVideoPoster = async () => {
-        const res = await fetch(`${HOST}/segments-poster`);
+        const res = await fetch(`${HOST}/poster`);
         const blob = await res.blob();
         const url = URL.createObjectURL(blob);
 
@@ -29,33 +26,31 @@ export const App = () => {
             <div className="image-container">
                 <img className="image" src={backgroundImage} alt="some info" />
             </div>
-
-            <Player autoplay={false}>
-            <Video poster={posterUrl}>      
-                    <source data-src={`${HOST}/video-chunk`} type="video/mp4" />
-                    </Video>
-                <DefaultUi>
-                <DefaultControls hideOnMouseLeave activeDuration={2000} />
-      </DefaultUi>
-            </Player>
-        {/* <div className="container">
+            
+        <div className="container">
             <h1 className="title">Segments</h1>
             <div className="player-container">
                 <Player controls autoplay={false}>
                     <Hls version="latest" poster={posterUrl}>
-                        <source data-src={`${HOST}/segments-list`} type="application/x-mpegURL" />
+                        <source data-src={`${HOST}/segments`} type="application/x-mpegURL" />
                     </Hls>
+                    <DefaultUi>
+                        <DefaultControls hideOnMouseLeave activeDuration={2000} />
+                    </DefaultUi>
                 </Player>
             </div>
-        </div> */}
+        </div>
 
         {/* <div className="container">
             <h1 className="title">Chunks</h1>
-            <div className="player-container">
-                <Video poster={posterUrl}>
-                    <source data-src={`${HOST}/video-chunk`} type="video/mp4" />
+            <Player className="player-container">
+                <Video poster={posterUrl}>      
+                    <source data-src={`${HOST}/video`} type="video/mp4" />
                 </Video>
-            </div>
+                <DefaultUi>
+                    <DefaultControls hideOnMouseLeave activeDuration={2000} />
+                </DefaultUi>
+            </Player>
         </div> */}
 
         {/* <div className="container">

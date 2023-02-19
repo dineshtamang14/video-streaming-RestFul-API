@@ -4,15 +4,10 @@ import * as path from "path";
 
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 
-const UNREAL_FILE_PATH = '../assets/unreal-engine-5-demo.mp4';
+const VIDEO_PATH = '../assets/Down.mp4';
 
-const resolvedPath = path.resolve(UNREAL_FILE_PATH);
+const resolvedPath = path.resolve(VIDEO_PATH);
 
-/**
- * Docs:
- * https://www.npmjs.com/package/fluent-ffmpeg
- * https://ffmpeg.org/ffmpeg-formats.html#hls
- */
 const command = ffmpeg(resolvedPath, { timeout: 432000 })
     .addOption([
         '-profile:v baseline',
